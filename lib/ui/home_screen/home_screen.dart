@@ -87,7 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
           if (state is HomeStateError) _onTryAgain = state.onTryAgain;
         },
         builder: (context, state) {
-          if (state is HomeStateError) {
+          if (state is HomeStateLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is HomeStateError) {
             return Center(child: ErrorStateWidget(onTryAgain: _onTryAgain));
           } else if (state is HomeStateEmpty) {
             return const Center(child: EmptyStateWidget());
@@ -109,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ListView.builder(
                             padding: const EdgeInsets.only(bottom: 20),
                             physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) => MotelCard(motel: _motels[index], isLoading: state is HomeStateLoading),
+                            itemBuilder: (context, index) => MotelCard(motel: _motels[index]),
                             shrinkWrap: true,
                             itemCount: _motels.length,
                           ),

@@ -4,8 +4,7 @@ import 'package:guia_de_moteis_go_challenge/ui/home_screen/widgets/motel_body.da
 
 class MotelCard extends StatelessWidget {
   final MotelDto motel;
-  final bool isLoading;
-  const MotelCard({super.key, required this.motel, required this.isLoading});
+  const MotelCard({super.key, required this.motel});
 
   @override
   Widget build(BuildContext context) {
